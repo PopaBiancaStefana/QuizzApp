@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+    <link href="../css/register.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Register</h1>
+        <p>Please fill in this form to generate a hash</p>
+        <hr>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id="email">
+
+        <button type="submit" class="button" onclick="validateEmail()">Register</button>
+        <button type="submit" class="button" onclick="location.href='game.html';">Log In</button>
+        <button type="submit" class="button" onclick="Statistics()">Statistics</button>
+    </div>
+
+    <div class="container">
+        <div class="stats-container" id="stats-container">
+            
+        </div>
+        <button type="submit" class="registerBtn" onclick="location.href='register.html';">Back</button>
+    </div>
+   
+    <script src="../javaScript/register.js"></script>
+</body>
+
+</html>
