@@ -4,11 +4,15 @@ body {
     background-size: cover;
     background-repeat: repeat;
     background-position: center;
+    margin-right: 0;
 }
 
 * {
+    margin: 0 0;
+    padding: 0;
     box-sizing: border-box;
-}
+    margin-right: 0;
+   }
 
 .form-container {
     position: absolute;
@@ -58,8 +62,6 @@ button:hover {
 .container {
     display: none;
     width: 60%;
-    min-height: 60%;
-    margin: auto;
     padding: 16px;
     background-color: white;
     top: 50%;
@@ -67,7 +69,7 @@ button:hover {
     transform: translate(-50%, -50%);
     border-radius: 20px;
     position: absolute;
-    margin-top: 100px;
+    margin-top: 500px;
 }
 
 .registerBtn{
@@ -76,4 +78,22 @@ button:hover {
 svg {
     width: 65%;
     margin-left: 15%;
+}
+.title-teams-div{
+    margin: 5% 35%;
+}
+.stats-container{
+    margin-top: 30%;
+}
+.algo-desc-div{
+    margin-bottom: 100px;
+}
+.teamsSVG{
+    height: 300px;
+}
+.teams{
+    margin-bottom: 200px;
+}
+li{
+    margin-left: 30px;
 }

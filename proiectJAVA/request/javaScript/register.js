@@ -45,6 +45,8 @@ function sendEmailToServer() {
 function statistics() {
     scoreTable();
     peopleGraph();
+    projectBuddiesSVG();
+    getTeams();
 }
 
 function scoreTable() {
@@ -63,7 +65,7 @@ function scoreTable() {
                 var usersScores = document.getElementById("stats-container");
                 var title = document.createElement("h2");
                 title.innerText = "Punctajul tuturor jucatorilor";
-                title.style.margin = '5% 30%'
+                title.style.margin = '50px 300px'
                 usersScores.appendChild(title);
 
                 var myTableDiv = document.getElementById("stats-container");
@@ -111,7 +113,7 @@ function scoreTable() {
                 table.style.width = '80%'
                 myTableDiv.appendChild(table);
             } else {
-                alert("[Eroare]O sa vedem mai tarziu.");
+                alert("[Eroare]Oops...A aparut o eroare, incearca sa faci refresh.");
             }
         }
     };
@@ -152,6 +154,88 @@ function peopleGraph() {
                 var smallText = document.createElement("p");
                 smallText.innerText = "*Legaturile se realizeaza intre persoanele ce au macar 5 domenii in comun.";
                 graph.appendChild(smallText);
+               
+            } else {
+                alert("[Eroare]O sa vedem mai tarziu.");
+            }
+        }
+    };
+
+    xhr.open('GET', url, true);
+    xhr.send();
+}
+function getTeams(){
+    document.querySelector(".form-container").style.display = 'none';
+    document.querySelector(".container").style.display = 'block';
+    var url = 'https://localhost:8443/api/v1/quiz/graph';
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {     
+                var myTableDiv = document.getElementById("teams");
+
+                var table = document.createElement('TABLE');
+                table.border = '1';
+                table.style.margin = '5% 10%';
+
+                var tableBody = document.createElement('TBODY');
+                table.appendChild(tableBody);
+
+                var tr = document.createElement('TR');
+                tableBody.appendChild(tr);
+                var th1 = document.createElement('TH');
+                th1.appendChild(document.createTextNode("Coechipier1"));
+                tr.appendChild(th1);
+
+                var th2 = document.createElement('TH');
+                th2.appendChild(document.createTextNode("Coechipier2"));
+                tr.appendChild(th2);
+
+                for (const [key, value] of Object.entries(JSON.parse(xhr.responseText))) {
+                    //console.log(key, value['email']);
+                    var tr = document.createElement('TR');
+                    tableBody.appendChild(tr);
+                    var td1 = document.createElement('TD');
+                    td1.appendChild(document.createTextNode(key));
+                    tr.appendChild(td1);
+
+                    var td2 = document.createElement('TD');
+                    td2.appendChild(document.createTextNode(value['email']));
+                    tr.appendChild(td2);
+                  }
+                  
+                table.style.width = '80%'
+                myTableDiv.appendChild(table);     
+            } else {
+                alert("[Eroare]O sa vedem mai tarziu.");
+            }
+        }
+    };
+
+    xhr.open('GET', url, true);
+    xhr.send();
+}
+function projectBuddiesSVG(){
+    document.querySelector(".form-container").style.display = 'none';
+    document.querySelector(".container").style.display = 'block';
+    var url = 'https://localhost:8443/api/v1/quiz/graphSVG';
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+                var graph = document.getElementById("teamsSVG");
+                while (graph.firstChild) {
+                    graph.removeChild(graph.firstChild);
+                } 
+               
+                var title = document.createElement("h2");
+                title.innerText = "Graful coechipierilor";
+                title.style.margin = '50px 300px'
+                graph.appendChild(title);
+
+                graph.innerHTML = graph.innerHTML + xhr.responseText;
                
             } else {
                 alert("[Eroare]O sa vedem mai tarziu.");

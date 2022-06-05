@@ -2,7 +2,7 @@ package com.app.quiz.controllers;
 
 import com.app.quiz.models.Person;
 import com.app.quiz.service.PersonService;
-import com.app.quiz.statistics.CheckGraphType;
+import com.app.quiz.statistics.BipartiteGraph;
 import com.app.quiz.statistics.Statistics;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultEdge;
@@ -31,12 +31,31 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
+    @GetMapping(value = "/graphSVG")
+    public ResponseEntity<FileSystemResource> getBipartiteSVG() throws IOException {
+        Statistics stats = new Statistics(personService.findAll());
+        stats.addDomains();
+        Graph<Person, DefaultEdge> graph = stats.getGraphForBipartition();
+        BipartiteGraph checker = new BipartiteGraph(graph, personService.findAll());
+        if(checker.isBipartite()) {
+            checker.maxMatching();
+            stats.makeTeamsSVG(checker.getTeamsGraph());
+            Path path = new File("src/main/resources/networkBipartite.svg").toPath();
+            FileSystemResource resource = new FileSystemResource(path);
+            return ResponseEntity.ok()
+                    .contentType(MediaType.parseMediaType(Files.probeContentType(path)))
+                    .body(resource);
+        }
+        return ResponseEntity.notFound()
+                .build();
+    }
+
     @GetMapping(value = "/graph")
     public ResponseEntity<Map<Person, Person>> getGraph(){
         Statistics stats = new Statistics(personService.findAll());
         stats.addDomains();
         Graph<Person, DefaultEdge> graph = stats.getGraphForBipartition();
-        CheckGraphType checker = new CheckGraphType(graph);
+        BipartiteGraph checker = new BipartiteGraph(graph, personService.findAll());
         if(checker.isBipartite()) {
             return new ResponseEntity<>(checker.maxMatching(), new HttpHeaders(), HttpStatus.OK);
         }

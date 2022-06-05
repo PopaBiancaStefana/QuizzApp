@@ -10,6 +10,7 @@ import guru.nidi.graphviz.model.MutableNode;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleDirectedGraph;
+import org.jgrapht.graph.SimpleGraph;
 import org.jgrapht.nio.Attribute;
 import org.jgrapht.nio.DefaultAttribute;
 import org.jgrapht.nio.dot.DOTExporter;
@@ -47,14 +48,20 @@ public class Statistics {
     public void makeNetwork() {
         addDomains();
         makeDot(getGraph());         //OPTIONAL
-        makeSVG(getMutableGraph(getGraph()));
+        makeSVG(getMutableGraph(getGraph()), "network.svg");
+    }
+    public void makeTeamsSVG(Graph<Person, DefaultEdge> graph){
+        addDomains();
+        makeDot(graph);         //OPTIONAL
+        makeSVG(getMutableTeamsGraph(graph), "networkBipartite.svg");
     }
 
-    private void makeSVG(MutableGraph mutableGraph) {
-        File network = new File("src/main/resources/network.svg");
+    private void makeSVG(MutableGraph mutableGraph, String fileName) {
+        String pathname = "src/main/resources/" + fileName;
+        File network = new File(pathname);
         network.delete();
         try {
-            Graphviz.fromGraph(mutableGraph).width(700).render(Format.SVG).toFile(new File("./src/main/resources/network.svg"));
+            Graphviz.fromGraph(mutableGraph).width(700).render(Format.SVG).toFile(new File("./" + pathname));
         } catch (IOException exception) {
             exception.printStackTrace();
         }
@@ -74,6 +81,19 @@ public class Statistics {
             if (partners.size() != 0) {
                 mutableGraph.add(node1);
             }
+        }
+        return mutableGraph;
+    }
+    public MutableGraph getMutableTeamsGraph(Graph<Person, DefaultEdge> simpleGraph){
+        MutableGraph mutableGraph = mutGraph("network").setDirected(false);
+        for(Person person : simpleGraph.vertexSet()){
+            MutableNode node1 = mutNode(person.getEmail());
+            for(Person partner : simpleGraph.vertexSet()){
+                if(simpleGraph.containsEdge(person, partner)){
+                    node1.addLink(Link.to(mutNode(partner.getEmail())));
+                }
+            }
+            mutableGraph.add(node1);
         }
         return mutableGraph;
     }
