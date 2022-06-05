@@ -42,7 +42,12 @@ function sendEmailToServer() {
 
 
 
-function Statistics() {
+function statistics() {
+    scoreTable();
+    peopleGraph();
+}
+
+function scoreTable() {
     document.querySelector(".form-container").style.display = 'none';
     document.querySelector(".container").style.display = 'block';
     var url = 'https://localhost:8443/api/v1/quiz/scores';
@@ -54,11 +59,11 @@ function Statistics() {
             if (xhr.status == 200) {
                 var player = "player_1";
                 var index = 1;
-               
+
                 var usersScores = document.getElementById("stats-container");
                 var title = document.createElement("h2");
                 title.innerText = "Punctajul tuturor jucatorilor";
-                title.style.margin = '5% 33%'
+                title.style.margin = '5% 30%'
                 usersScores.appendChild(title);
 
                 var myTableDiv = document.getElementById("stats-container");
@@ -105,6 +110,45 @@ function Statistics() {
                 }
                 table.style.width = '80%'
                 myTableDiv.appendChild(table);
+            } else {
+                alert("[Eroare]O sa vedem mai tarziu.");
+            }
+        }
+    };
+
+    xhr.open('GET', url, true);
+    xhr.send();
+}
+
+
+function peopleGraph() {
+    document.querySelector(".form-container").style.display = 'none';
+    document.querySelector(".container").style.display = 'block';
+    var url = 'https://localhost:8443/api/v1/quiz/test';
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+            //var response = JSON.parse(xhr.responseText);
+            if (xhr.status == 200) {
+               
+                var graph = document.getElementById("graph");
+                while (graph.firstChild) {
+                    graph.removeChild(graph.firstChild);
+                } 
+                
+                var title = document.createElement("h2");
+                title.innerText = "Observa cu cine ai lucruri in comun!";
+                title.style.margin = '0% 25%'
+                graph.appendChild(title);
+               
+                var title = document.createElement("h2");
+                title.innerText = "Graful jucatorilor";
+                title.style.margin = '2% 37%'
+                graph.appendChild(title);
+
+                graph.innerHTML = graph.innerHTML + xhr.responseText;
+               
             } else {
                 alert("[Eroare]O sa vedem mai tarziu.");
             }

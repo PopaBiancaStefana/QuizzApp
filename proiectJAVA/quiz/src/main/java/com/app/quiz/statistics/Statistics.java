@@ -3,8 +3,10 @@ package com.app.quiz.statistics;
 import com.app.quiz.models.Person;
 import guru.nidi.graphviz.engine.Format;
 import guru.nidi.graphviz.engine.Graphviz;
+import guru.nidi.graphviz.model.Link;
 import guru.nidi.graphviz.model.MutableGraph;
-import guru.nidi.graphviz.parse.Parser;
+import guru.nidi.graphviz.model.MutableNode;
+
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleDirectedGraph;
@@ -13,16 +15,17 @@ import org.jgrapht.nio.DefaultAttribute;
 import org.jgrapht.nio.dot.DOTExporter;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.NoSuchFileException;
 import java.util.*;
 
-public class Statistics{
+import static guru.nidi.graphviz.model.Factory.mutGraph;
+import static guru.nidi.graphviz.model.Factory.mutNode;
+
+public class Statistics {
     private List<Person> people;
+
     private Map<String, List<String>> peopleDomains = new HashMap<>();
-
-
-    public Statistics(List<Person> people) {
-        setPeople(people);
-    }
 
     public List<Person> getPeople() {
         return people;
@@ -37,58 +40,77 @@ public class Statistics{
     }
 
 
-    public void calculateStatistics() {
-        this.addDomains();
-        createSVG(this.getGraph());
+    public Statistics(List<Person> people) {
+        this.people = people;
     }
 
-    public synchronized void  createSVG(Graph<Person, DefaultEdge> graph) {
+    public void makeNetwork() {
+        addDomains();
+        makeDot(getGraph());         //OPTIONAL
+        makeSVG(getMutableGraph(getGraph()));
+    }
 
-        DOTExporter<Person, DefaultEdge> exporter = new DOTExporter<>();
-
-        exporter.setVertexAttributeProvider((v) -> {
-            Map<String, Attribute> map = new LinkedHashMap<>();
-            map.put("label", DefaultAttribute.createAttribute(v.toString()));
-            return map;
-        });
-
-
-        Writer writer = new StringWriter();
-        exporter.exportGraph(graph, writer);
-
+    private void makeSVG(MutableGraph mutableGraph) {
+        File network = new File("src/main/resources/network.svg");
+        network.delete();
         try {
-            FileWriter fileWriter = new FileWriter("./src/main/resources/network.dot");
-            fileWriter.write(writer.toString());
-            fileWriter.close();
+            Graphviz.fromGraph(mutableGraph).width(700).render(Format.SVG).toFile(new File("./src/main/resources/network.svg"));
         } catch (IOException exception) {
             exception.printStackTrace();
         }
-        try (InputStream dot = getClass().getResourceAsStream("/network.dot")) {
-            MutableGraph g = new Parser().read(dot);
-            Graphviz.fromGraph(g).width(700).render(Format.SVG).toFile(new File("./src/main/resources/network.svg"));
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
-
     }
 
+    public MutableGraph getMutableGraph( Graph<Person, DefaultEdge> simpleGraph) {
 
-    public Graph<Person, DefaultEdge> getGraph() {
-        Graph<Person, DefaultEdge> graph = new SimpleDirectedGraph<>(DefaultEdge.class);
-
-        this.people.forEach(graph::addVertex);
-
-
-        for (Person person : people){
+        MutableGraph mutableGraph = mutGraph("network").setDirected(false);
+        for (Person person : people) {
             List<Person> partners = findPartners(person);
-            for( Person partner : partners){
-                graph.addEdge(person,partner);
+            for (Person partner : partners) {
+                if (simpleGraph.getEdge(partner, person) == null) {
+                    MutableNode node1 = mutNode(person.getEmail());
+                    node1.addLink(Link.to(mutNode(partner.getEmail())));
+                    mutableGraph.add(node1);
+                }
             }
         }
-        return graph;
+        return mutableGraph;
     }
 
-    //function that returns the people that have at least 3 domains in common
+    public  Graph<Person, DefaultEdge> getGraph() {
+        Graph<Person, DefaultEdge> simpleGraph = new SimpleDirectedGraph<>(DefaultEdge.class);
+        this.people.forEach(simpleGraph::addVertex);
+
+        for (Person person : people) {
+            List<Person> partners = findPartners(person);
+            for (Person partner : partners) {
+                if(!partners.isEmpty()){
+                    if (simpleGraph.getEdge(partner, person) == null) {
+                        simpleGraph.addEdge(person, partner);
+                    }
+                }
+            }
+        }
+        return simpleGraph;
+    }
+    public  Graph<Person, DefaultEdge> getGraphForBipartition() {
+        Graph<Person, DefaultEdge> simpleGraph = new SimpleDirectedGraph<>(DefaultEdge.class);
+        this.people.forEach(simpleGraph::addVertex);
+
+        for (Person person : people) {
+            List<Person> partners = findPartners(person);
+            if(partners.isEmpty()){
+                simpleGraph.removeVertex(person);
+            }
+            for (Person partner : partners) {
+                if (simpleGraph.getEdge(partner, person) == null) {
+                    simpleGraph.addEdge(person, partner);
+                }
+            }
+        }
+        return simpleGraph;
+    }
+
+    //function that returns the people that have at least 5 domains in common
     public List<Person> findPartners(Person person) {
         List<Person> partners = new ArrayList<>();
         List<String> personD = peopleDomains.get(person.getEmail());
@@ -102,7 +124,7 @@ public class Statistics{
                             match++;
                         }
                     }
-                    if (match >= 3) {
+                    if (match >= 5) {
                         partners.add(partner);
                         break;
                     }
@@ -124,4 +146,30 @@ public class Statistics{
         }
     }
 
+
+    private void makeDot(Graph<Person, DefaultEdge> graph) {
+        DOTExporter<Person, DefaultEdge> exporter = new DOTExporter<>();
+
+        exporter.setVertexAttributeProvider((v) -> {
+            Map<String, Attribute> map = new LinkedHashMap<>();
+            map.put("label", DefaultAttribute.createAttribute(v.toString()));
+            return map;
+        });
+
+
+        Writer writer = new StringWriter();
+        exporter.exportGraph(graph, writer);
+
+        try {
+            FileWriter fileWriter = new FileWriter("./src/main/resources/network.dot");
+            fileWriter.write(writer.toString());
+            fileWriter.close();
+        } catch (IOException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    public void calculateStatistics() {
+        addDomains();
+    }
 }

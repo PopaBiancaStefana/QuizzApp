@@ -759,3 +759,196 @@ INSERT INTO RASPUNSURI VALUES('Q60', 'A586', 'Marele Zid Chinezesc', '0');
 INSERT INTO RASPUNSURI VALUES('Q60', 'A587', 'Palatul Buckingham', '1');
 INSERT INTO RASPUNSURI VALUES('Q60', 'A588', 'Burj Khalifa', '0');
 INSERT INTO RASPUNSURI VALUES('Q60', 'A589', 'Parcul National al Marelui Canion', '0');
+
+
+--GAMING
+
+INSERT INTO INTREBARI VALUES('Gaming','Q61','Ce jocuri sunt pe Xbox dar nu si pe ps4?');
+INSERT INTO RASPUNSURI VALUES ('Q61','A585','Gears 5','1');
+INSERT INTO RASPUNSURI VALUES ('Q61','A586','Call of duty','0');
+INSERT INTO RASPUNSURI VALUES ('Q61','A587','Halo Infinite','1');
+INSERT INTO RASPUNSURI VALUES ('Q61','A588','Sea of Thieves','1');
+INSERT INTO RASPUNSURI VALUES ('Q61','A589','Final fantasy','0');
+INSERT INTO RASPUNSURI VALUES ('Q61','A590','God of war','0');
+INSERT INTO RASPUNSURI VALUES ('Q61','A591','Forza Motorsport 7','1');
+INSERT INTO RASPUNSURI VALUES ('Q61','A592','Overwatch','0');
+INSERT INTO RASPUNSURI VALUES ('Q61','A593','Resident Evil Village','0');
+INSERT INTO RASPUNSURI VALUES ('Q61','A594','Forza Horizon 5','1');
+
+
+--FOOD 
+
+INSERT INTO INTREBARI VALUES('Food','Q62','Din ce tara provine sushi?');
+INSERT INTO RASPUNSURI VALUES ('Q62','A595','Romania','0');
+INSERT INTO RASPUNSURI VALUES ('Q62','A596','China','1');
+INSERT INTO RASPUNSURI VALUES ('Q62','A597','Olanda','0');
+INSERT INTO RASPUNSURI VALUES ('Q62','A598','Japonia','0');
+INSERT INTO RASPUNSURI VALUES ('Q62','A599','India','0');
+INSERT INTO RASPUNSURI VALUES ('Q62','A600','Italia','0');
+INSERT INTO RASPUNSURI VALUES ('Q62','A601','Israel','0');
+INSERT INTO RASPUNSURI VALUES ('Q62','A602','Coreea de Sud ','0');
+INSERT INTO RASPUNSURI VALUES ('Q62','A603','Portugalia','0');
+INSERT INTO RASPUNSURI VALUES ('Q62','A604','Arabia','0');
+
+--SPORT
+
+INSERT INTO INTREBARI VALUES('Sport','Q63','Ce sporturi sunt oficiale?');
+INSERT INTO RASPUNSURI VALUES ('Q63','A605','balet','1');
+INSERT INTO RASPUNSURI VALUES ('Q63','A606','mancat','0');
+INSERT INTO RASPUNSURI VALUES ('Q63','A607','orientare','1');
+INSERT INTO RASPUNSURI VALUES ('Q63','A608','alergat','1');
+INSERT INTO RASPUNSURI VALUES ('Q63','A609','karting','1');
+INSERT INTO RASPUNSURI VALUES ('Q63','A610','gatit','0');
+INSERT INTO RASPUNSURI VALUES ('Q63','A611','baschet','1');
+INSERT INTO RASPUNSURI VALUES ('Q63','A612','imbracat','0');
+INSERT INTO RASPUNSURI VALUES ('Q63','A613','canotaj','1');
+INSERT INTO RASPUNSURI VALUES ('Q63','A614','biliard','1');
+
+--SINONIME
+
+INSERT INTO INTREBARI VALUES('Sinonime','Q64','Ce sinonime are cuvantul cuminte?');
+INSERT INTO RASPUNSURI VALUES ('Q64','A615','chibzuit','1');
+INSERT INTO RASPUNSURI VALUES ('Q64','A616','extravagant','0');
+INSERT INTO RASPUNSURI VALUES ('Q64','A617','ascultator','1');
+INSERT INTO RASPUNSURI VALUES ('Q64','A618','vorbaret','0');
+INSERT INTO RASPUNSURI VALUES ('Q64','A619','echilibrat','1');
+INSERT INTO RASPUNSURI VALUES ('Q64','A620','neatent','0');
+INSERT INTO RASPUNSURI VALUES ('Q64','A621','cumpatat','1');
+INSERT INTO RASPUNSURI VALUES ('Q64','A622','incantator','0');
+INSERT INTO RASPUNSURI VALUES ('Q64','A623','umil','0');
+INSERT INTO RASPUNSURI VALUES ('Q64','A624','haios','0');
+
+
+--BUNE MANIERE
+
+INSERT INTO INTREBARI VALUES('Bune maniere','Q65','Cand e permis sa privesti pe cineva in ochi?');
+INSERT INTO RASPUNSURI VALUES ('Q65','A625','Niciodata','0');
+INSERT INTO RASPUNSURI VALUES ('Q65','A626','In public, atunci cand esti intr-un mijloc de transport in comun','1');
+INSERT INTO RASPUNSURI VALUES ('Q65','A627','Cand canti','0');
+INSERT INTO RASPUNSURI VALUES ('Q65','A628','Oricand','0');
+INSERT INTO RASPUNSURI VALUES ('Q65','A629','In public, cand astepti sa iti vina randul','1');
+INSERT INTO RASPUNSURI VALUES ('Q65','A630','Doar cand cunosti persoana ','0');
+INSERT INTO RASPUNSURI VALUES ('Q65','A631','In comert daca esti vanzator, cand ii inmanezi marfa clientului','1');
+INSERT INTO RASPUNSURI VALUES ('Q65','A632','Cand treci pe strada pe langa respectiva persoana','0');
+INSERT INTO RASPUNSURI VALUES ('Q65','A633','Cand mananci','0');
+INSERT INTO RASPUNSURI VALUES ('Q65','A634','Niciodata in public','0');
+
+
+INSERT INTO INTREBARI VALUES('Bune maniere','Q66','Ce regula de salut este gresita?');
+INSERT INTO RASPUNSURI VALUES ('Q66','A635','Barbatii saluta atunci cand se intalnesc cu o femeie','0');
+INSERT INTO RASPUNSURI VALUES ('Q66','A636','Cei tineri ii saluta pe cei in varsta','0');
+INSERT INTO RASPUNSURI VALUES ('Q66','A637','Noi venitii ii saluta pe cei aflati intr-o incapere','0');
+INSERT INTO RASPUNSURI VALUES ('Q66','A638','Se saluta cu gura plina','1');
+INSERT INTO RASPUNSURI VALUES ('Q66','A639','Cei aflati in trecere ii saluta pe cei care stationeaza','0');
+INSERT INTO RASPUNSURI VALUES ('Q66','A640','Cei aflati in masina ii vor saluta pe cei aflati pe jos','0');
+INSERT INTO RASPUNSURI VALUES ('Q66','A641','Cei in varsta ii saluta pe cei batrani','1');
+INSERT INTO RASPUNSURI VALUES ('Q66','A642','Nu ai voie sa saluti persoane necunoscute','1');
+INSERT INTO RASPUNSURI VALUES ('Q66','A643','La magazin nu e nevoie sa saluti vanzatorul','1');
+INSERT INTO RASPUNSURI VALUES ('Q66','A644','Nu saluti niciodata','1');
+
+
+
+--ARHITECTURA 
+
+INSERT INTO INTREBARI VALUES('Arhitectura','Q67','În ce ora? se afl? biserica Sagrada Familia?');
+INSERT INTO RASPUNSURI VALUES ('Q67','A645','Londra','0');
+INSERT INTO RASPUNSURI VALUES ('Q67','A646','Madrid','0');
+INSERT INTO RASPUNSURI VALUES ('Q67','A647','Instanbul','0');
+INSERT INTO RASPUNSURI VALUES ('Q67','A648','Zaragoza','0');
+INSERT INTO RASPUNSURI VALUES ('Q67','A649','Salvador','0');
+INSERT INTO RASPUNSURI VALUES ('Q67','A650','Barcelona','1');
+INSERT INTO RASPUNSURI VALUES ('Q67','A651','Yokohoma','0');
+INSERT INTO RASPUNSURI VALUES ('Q67','A652','Moscova','0');
+INSERT INTO RASPUNSURI VALUES ('Q67','A653','Berlin','0');
+INSERT INTO RASPUNSURI VALUES ('Q67','A654','Kiev','0');
+
+
+--ARTA 
+
+INSERT INTO INTREBARI VALUES('Arta','Q68','Care din urmatoarele opere au fost pictate de Picasso?');
+INSERT INTO RASPUNSURI VALUES ('Q68','A655','Femeie a?ezat?','1');
+INSERT INTO RASPUNSURI VALUES ('Q68','A656','Maini creatoare','0');
+INSERT INTO RASPUNSURI VALUES ('Q68','A657','Femeile din Alger','1');
+INSERT INTO RASPUNSURI VALUES ('Q68','A658','Salvator Mundi','0');
+INSERT INTO RASPUNSURI VALUES ('Q68','A659','Gioconda','0');
+INSERT INTO RASPUNSURI VALUES ('Q68','A660','Visul','1');
+INSERT INTO RASPUNSURI VALUES ('Q68','A661','Dama cu hermina','0');
+INSERT INTO RASPUNSURI VALUES ('Q68','A662','Nud, frunze verzi ?i bust','1');
+INSERT INTO RASPUNSURI VALUES ('Q68','A663','Cina cea de taina','0');
+INSERT INTO RASPUNSURI VALUES ('Q68','A664','B?iat cu pip?','1');
+
+
+--MODA 
+
+INSERT INTO INTREBARI VALUES('Moda','Q69','Ce designer are ca semnatura talpile rosii lacuite ale pantofilor?');
+INSERT INTO RASPUNSURI VALUES ('Q69','A665','Lady Diana','0');
+INSERT INTO RASPUNSURI VALUES ('Q69','A666','Manolo Blahnik','0');
+INSERT INTO RASPUNSURI VALUES ('Q69','A667','Carrie Bradshaw','0');
+INSERT INTO RASPUNSURI VALUES ('Q69','A668','Christian Louboutin','1');
+INSERT INTO RASPUNSURI VALUES ('Q69','A669','Marilyn Monroe','0');
+INSERT INTO RASPUNSURI VALUES ('Q69','A670','Jimmy Choo','0');
+INSERT INTO RASPUNSURI VALUES ('Q69','A671','Coco Chanel','0');
+INSERT INTO RASPUNSURI VALUES ('Q69','A672','Vogue','0');
+INSERT INTO RASPUNSURI VALUES ('Q69','A673','Giuseppe Zanotti','0');
+INSERT INTO RASPUNSURI VALUES ('Q69','A674','Gucci','0');
+
+--CELEBRITATI
+
+INSERT INTO INTREBARI VALUES('Celebritati','Q70','Ce slujbe a avut Brad Pitt inainte sa intre in lumea filmului?');
+INSERT INTO RASPUNSURI VALUES ('Q70','A675','Dansator','0');
+INSERT INTO RASPUNSURI VALUES ('Q70','A676','Sofer','1');
+INSERT INTO RASPUNSURI VALUES ('Q70','A677','Frizer','0');
+INSERT INTO RASPUNSURI VALUES ('Q70','A678','Manipulator de marfa','1');
+INSERT INTO RASPUNSURI VALUES ('Q70','A679','Vanzator','0');
+INSERT INTO RASPUNSURI VALUES ('Q70','A680','Pompier','0');
+INSERT INTO RASPUNSURI VALUES ('Q70','A681','Mascota unui lant de resaturante','1');
+INSERT INTO RASPUNSURI VALUES ('Q70','A682','Cascador','0');
+INSERT INTO RASPUNSURI VALUES ('Q70','A683','Bucatar','0');
+INSERT INTO RASPUNSURI VALUES ('Q70','A684','Influencer','0');
+
+--PLANTE
+
+INSERT INTO INTREBARI VALUES('Plante','Q71','Ce fructe sunt bogate in vitamina C?');
+INSERT INTO RASPUNSURI VALUES ('Q71','A685','strugurii','1');
+INSERT INTO RASPUNSURI VALUES ('Q71','A686','nuca','0');
+INSERT INTO RASPUNSURI VALUES ('Q71','A687','capsuni','1');
+INSERT INTO RASPUNSURI VALUES ('Q71','A688','mango','0');
+INSERT INTO RASPUNSURI VALUES ('Q71','A689','aronia','1');
+INSERT INTO RASPUNSURI VALUES ('Q71','A690','cocos','0');
+INSERT INTO RASPUNSURI VALUES ('Q71','A691','portocala','1');
+INSERT INTO RASPUNSURI VALUES ('Q71','A692','carof','0');
+INSERT INTO RASPUNSURI VALUES ('Q71','A693','banana','0');
+INSERT INTO RASPUNSURI VALUES ('Q71','A694','zmeura','1');
+
+--SERIALE
+
+INSERT INTO INTREBARI VALUES('Seriale','Q72','Daenerys Targaryen este unul dintre personajele principale din serialul?');
+INSERT INTO RASPUNSURI VALUES ('Q72','A695','Game of Thrones ','1');
+INSERT INTO RASPUNSURI VALUES ('Q72','A696','Vikings','0');
+INSERT INTO RASPUNSURI VALUES ('Q72','A697','Queen of the South','0');
+INSERT INTO RASPUNSURI VALUES ('Q72','A698','Elizabeth','0');
+INSERT INTO RASPUNSURI VALUES ('Q72','A699','Gossip Girl','0');
+INSERT INTO RASPUNSURI VALUES ('Q72','A700','True Vampire','0');
+INSERT INTO RASPUNSURI VALUES ('Q72','A701','House ','0');
+INSERT INTO RASPUNSURI VALUES ('Q72','A702','Friends','0');
+INSERT INTO RASPUNSURI VALUES ('Q72','A703','Supernatural','0');
+INSERT INTO RASPUNSURI VALUES ('Q72','A704','How I met your mother','0');
+
+--LIMBA ROMANA
+
+INSERT INTO INTREBARI VALUES('Limba romana','Q73','Care este denumirea pe care o poart? fobia de cuvinte lungi?');
+INSERT INTO RASPUNSURI VALUES ('Q73','A705','laliofobie','0');
+INSERT INTO RASPUNSURI VALUES ('Q73','A706','acrofobie','0');
+INSERT INTO RASPUNSURI VALUES ('Q73','A708','chionofobie','0');
+INSERT INTO RASPUNSURI VALUES ('Q73','A709','hilofobie','0');
+INSERT INTO RASPUNSURI VALUES ('Q73','A710','aihmofobie','0');
+INSERT INTO RASPUNSURI VALUES ('Q73','A711','logofobie','0');
+INSERT INTO RASPUNSURI VALUES ('Q73','A712','hippopotomonstrosesquipedaliofobia','1');
+INSERT INTO RASPUNSURI VALUES ('Q73','A713','tripanofobie','0');
+INSERT INTO RASPUNSURI VALUES ('Q73','A714','anglofobie','0');
+INSERT INTO RASPUNSURI VALUES ('Q73','A715','tripofobie','0');
+
+
+		
+
+COMMIT;

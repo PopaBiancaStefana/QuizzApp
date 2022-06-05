@@ -2,9 +2,12 @@ package com.app.quiz.controllers;
 
 import com.app.quiz.models.Person;
 import com.app.quiz.service.PersonService;
+import com.app.quiz.statistics.CheckGraphType;
 import com.app.quiz.statistics.Statistics;
-import org.apache.commons.io.IOUtils;
+import org.jgrapht.Graph;
+import org.jgrapht.graph.DefaultEdge;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -12,8 +15,10 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -26,13 +31,29 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @GetMapping(
-            value = "/test"
-    )
-    public @ResponseBody byte[] getImageWithMediaType() throws IOException {
-        InputStream in = getClass()
-                .getResourceAsStream("/network.svg");
-        return IOUtils.toByteArray(in);
+    @GetMapping(value = "/graph")
+    public ResponseEntity<Map<Person, Person>> getGraph(){
+        Statistics stats = new Statistics(personService.findAll());
+        stats.addDomains();
+        Graph<Person, DefaultEdge> graph = stats.getGraphForBipartition();
+        CheckGraphType checker = new CheckGraphType();
+        graph.iterables();
+        if(checker.isBipartite(graph)) {
+            checker.makeAdjacencyMatrix();
+            return new ResponseEntity<>(checker.maxMatching(), new HttpHeaders(), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
+    }
+
+    @GetMapping(value = "/test")
+    public ResponseEntity<FileSystemResource> getImageWithMediaType() throws IOException {
+        Statistics stats = new Statistics(personService.findAll());
+        stats.makeNetwork();
+        Path path = new File("src/main/resources/network.svg").toPath();
+        FileSystemResource resource = new FileSystemResource(path);
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(Files.probeContentType(path)))
+                .body(resource);
     }
 
     @GetMapping(value = "/users")

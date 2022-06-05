@@ -67,8 +67,13 @@ button:hover {
     transform: translate(-50%, -50%);
     border-radius: 20px;
     position: absolute;
+    margin-top: 100px;
 }
 
 .registerBtn{
     margin-bottom: 0%;
+}
+svg {
+    width: 65%;
+    margin-left: 15%;
 }
