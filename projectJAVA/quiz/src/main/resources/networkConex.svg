@@ -1,0 +1,95 @@
+<svg width="700px" height="461px"
+ viewBox="0.00 0.00 504.19 332.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1.0 1.0) rotate(0.0) translate(4.0 328.0)">
+<title>network</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-328 500.19,-328 500.19,4 -4,4"/>
+<!-- cazan@yahoo.com -->
+<g id="node1" class="node">
+<title>cazan@yahoo.com</title>
+<ellipse fill="none" stroke="black" cx="167.54" cy="-306" rx="80.69" ry="18"/>
+<text text-anchor="middle" x="167.54" y="-302.3" font-family="Times New Roman,serif" font-size="14.00">cazan@yahoo.com</text>
+</g>
+<!-- IQ@yahoo.com -->
+<g id="node2" class="node">
+<title>IQ@yahoo.com</title>
+<ellipse fill="none" stroke="black" cx="69.54" cy="-234" rx="69.59" ry="18"/>
+<text text-anchor="middle" x="69.54" y="-230.3" font-family="Times New Roman,serif" font-size="14.00">IQ@yahoo.com</text>
+</g>
+<!-- cazan@yahoo.com&#45;&#45;IQ@yahoo.com -->
+<g id="edge1" class="edge">
+<title>cazan@yahoo.com&#45;&#45;IQ@yahoo.com</title>
+<path fill="none" stroke="black" d="M144.32,-288.41C128.58,-277.17 107.89,-262.39 92.26,-251.23"/>
+</g>
+<!-- YALA@yahoo.com -->
+<g id="node3" class="node">
+<title>YALA@yahoo.com</title>
+<ellipse fill="none" stroke="black" cx="279.54" cy="-234" rx="84.49" ry="18"/>
+<text text-anchor="middle" x="279.54" y="-230.3" font-family="Times New Roman,serif" font-size="14.00">YALA@yahoo.com</text>
+</g>
+<!-- cazan@yahoo.com&#45;&#45;YALA@yahoo.com -->
+<g id="edge2" class="edge">
+<title>cazan@yahoo.com&#45;&#45;YALA@yahoo.com</title>
+<path fill="none" stroke="black" d="M193.52,-288.76C211.61,-277.46 235.65,-262.44 253.71,-251.15"/>
+</g>
+<!-- 000@yahoo.com -->
+<g id="node4" class="node">
+<title>000@yahoo.com</title>
+<ellipse fill="none" stroke="black" cx="167.54" cy="-162" rx="73.39" ry="18"/>
+<text text-anchor="middle" x="167.54" y="-158.3" font-family="Times New Roman,serif" font-size="14.00">000@yahoo.com</text>
+</g>
+<!-- cazan@yahoo.com&#45;&#45;000@yahoo.com -->
+<g id="edge3" class="edge">
+<title>cazan@yahoo.com&#45;&#45;000@yahoo.com</title>
+<path fill="none" stroke="black" d="M167.54,-287.87C167.54,-260.58 167.54,-207.52 167.54,-180.19"/>
+</g>
+<!-- YALA@yahoo.com&#45;&#45;000@yahoo.com -->
+<g id="edge5" class="edge">
+<title>YALA@yahoo.com&#45;&#45;000@yahoo.com</title>
+<path fill="none" stroke="black" d="M253.57,-216.76C235.34,-205.38 211.1,-190.22 192.99,-178.91"/>
+</g>
+<!-- tigaie@gmail.com -->
+<g id="node5" class="node">
+<title>tigaie@gmail.com</title>
+<ellipse fill="none" stroke="black" cx="334.54" cy="-162" rx="75.29" ry="18"/>
+<text text-anchor="middle" x="334.54" y="-158.3" font-family="Times New Roman,serif" font-size="14.00">tigaie@gmail.com</text>
+</g>
+<!-- YALA@yahoo.com&#45;&#45;tigaie@gmail.com -->
+<g id="edge4" class="edge">
+<title>YALA@yahoo.com&#45;&#45;tigaie@gmail.com</title>
+<path fill="none" stroke="black" d="M292.86,-216.05C301.51,-205.05 312.73,-190.76 321.35,-179.79"/>
+</g>
+<!-- haida@gmail.co -->
+<g id="node6" class="node">
+<title>haida@gmail.co</title>
+<ellipse fill="none" stroke="black" cx="251.54" cy="-90" rx="68.79" ry="18"/>
+<text text-anchor="middle" x="251.54" y="-86.3" font-family="Times New Roman,serif" font-size="14.00">haida@gmail.co</text>
+</g>
+<!-- tigaie@gmail.com&#45;&#45;haida@gmail.co -->
+<g id="edge6" class="edge">
+<title>tigaie@gmail.com&#45;&#45;haida@gmail.co</title>
+<path fill="none" stroke="black" d="M314.87,-144.41C301.64,-133.25 284.27,-118.6 271.07,-107.47"/>
+</g>
+<!-- gogo@yahoo.com -->
+<g id="node7" class="node">
+<title>gogo@yahoo.com</title>
+<ellipse fill="none" stroke="black" cx="417.54" cy="-90" rx="78.79" ry="18"/>
+<text text-anchor="middle" x="417.54" y="-86.3" font-family="Times New Roman,serif" font-size="14.00">gogo@yahoo.com</text>
+</g>
+<!-- tigaie@gmail.com&#45;&#45;gogo@yahoo.com -->
+<g id="edge7" class="edge">
+<title>tigaie@gmail.com&#45;&#45;gogo@yahoo.com</title>
+<path fill="none" stroke="black" d="M354.21,-144.41C367.44,-133.25 384.81,-118.6 398.02,-107.47"/>
+</g>
+<!-- incaunul@yahoo.com -->
+<g id="node8" class="node">
+<title>incaunul@yahoo.com</title>
+<ellipse fill="none" stroke="black" cx="251.54" cy="-18" rx="89.88" ry="18"/>
+<text text-anchor="middle" x="251.54" y="-14.3" font-family="Times New Roman,serif" font-size="14.00">incaunul@yahoo.com</text>
+</g>
+<!-- haida@gmail.co&#45;&#45;incaunul@yahoo.com -->
+<g id="edge8" class="edge">
+<title>haida@gmail.co&#45;&#45;incaunul@yahoo.com</title>
+<path fill="none" stroke="black" d="M251.54,-71.7C251.54,-60.85 251.54,-46.92 251.54,-36.1"/>
+</g>
+</g>
+</svg>

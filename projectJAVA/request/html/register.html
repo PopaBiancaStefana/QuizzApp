@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Register</title>
+    <link href="../css/register.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="form-container">
+        <h1>Register</h1>
+        <p>Introdu o adresa de email valida pentru a incepe testul.</p>
+        <hr>
+
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" id="email">
+
+        <button type="submit" class="button" onclick="validateEmail()">Register</button>
+        <button type="submit" class="button" onclick="location.href='game.html';">Log In</button>
+        <button type="submit" class="button" onclick="statistics()">Statistics</button>
+    </div>
+
+    <div class="container">
+        <div class="stats-container" id="stats-container">
+        </div>
+
+        <div class="graph" id="graph">
+        </div>
+
+        <div class="algo-desc-div">
+            <h2 class="title-teams-div">Echipe pentru proiect</h2>
+            <p>Pentru a verifica daca graful jucatorilor este bipartit ne vom folosi de un algoritm bazat pe BFS:</p>
+            <ul class="algo-steps">
+                <li>Nodul sursa va avea culoarea 1 (setul U).</li>
+                <li>Toti vecinii sai vor fi colorati cu 0 (setul V).</li>
+                <li>Toti vecinii vecinilor vor fi colorati cu 0 (setul U).</li>
+                <li>In acest fel, verificam daca graful este 2-colorabil.</li>
+                <li>In timp ce coloram fiecare nod, daca gasim un nod cu aceeasi culoare ca nodul curent, inseamna ca
+                    graful nu este 2-colorabil (nu este bipartit)</li>
+            </ul>
+            <p>Daca graful este bipartit, atunci vom calcula Maximum Bipartite Matching. Graful bipartit va fi
+                reprezentat cu o matrice de adiacenta, unde jucatorii vor fi randuri si potentialii coechipieri
+                vor fi coloane.</p>
+            <p>Am folosit Ford-Fulkerson astfel:</p>
+            <ul class="algo-steps">
+                <li>Retinem intr-un vector assign[] ce echipe au fost generate.</li>
+                <li>Fiecare jucator va avea un vector visited[] pentru a verifica ce canditati au fost deja asignati.
+                </li>
+                <li>Pentru fiecare jucator aplicam Depth-First Search (DFS) (pentru a gasi un coechipier)</li>
+            </ul>
+        </div>
+        <div id="teamsSVG" class="teamsSVG">
+        </div>
+        <div id="teams" class="teams">
+            <p>Aici poti vedea cu cine esti in echipa.</p>
+        </div>
+
+        <button type="submit" class="registerBtn" onclick="location.href='register.html';">Back</button>
+    </div>
+
+    <script src="../javaScript/register.js"></script>
+</body>
+
+</html>

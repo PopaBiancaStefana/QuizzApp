@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url("../images/background.png");
+    background-size: cover;
+    background-repeat: repeat;
+    background-position: center;
+    margin-right: 0;
+}
+
+* {
+    margin: 0 0;
+    padding: 0;
+    box-sizing: border-box;
+    margin-right: 0;
+}
+
+.form-container {
+    position: absolute;
+    width: 60%;
+    margin: auto;
+    padding: 16px;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+hr {
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+}
+
+button {
+    width: 200px;
+    padding: 10px;
+    background-color: #000000;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #383838;
+}
+
+.container {
+    display: none;
+    width: 60%;
+    padding: 16px;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+    position: absolute;
+    margin-top: 800px;
+}
+
+.registerBtn {
+    margin-bottom: 0%;
+}
+
+svg {
+    width: 65%;
+    margin-left: 15%;
+}
+
+.title-teams-div {
+    margin: 5% 35%;
+}
+
+.stats-container {
+    margin-top: 10%;
+}
+
+.algo-desc-div {
+    margin-bottom: 100px;
+}
+
+.teamsSVG {
+    height: 300px;
+}
+
+.teams {
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+li {
+    margin-left: 30px;
+}
