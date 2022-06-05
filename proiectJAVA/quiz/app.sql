@@ -477,3 +477,7 @@ begin
      DBMS_OUTPUT.PUT_LINE(text);
 end;
 
+delete from utilizator where email like 'alt@gmail.com';
+delete from teste where email like 'alt@gmail.com';
+commit;
+

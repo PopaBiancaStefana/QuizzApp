@@ -36,10 +36,8 @@ public class PersonController {
         Statistics stats = new Statistics(personService.findAll());
         stats.addDomains();
         Graph<Person, DefaultEdge> graph = stats.getGraphForBipartition();
-        CheckGraphType checker = new CheckGraphType();
-        graph.iterables();
-        if(checker.isBipartite(graph)) {
-            checker.makeAdjacencyMatrix();
+        CheckGraphType checker = new CheckGraphType(graph);
+        if(checker.isBipartite()) {
             return new ResponseEntity<>(checker.maxMatching(), new HttpHeaders(), HttpStatus.OK);
         }
         return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);

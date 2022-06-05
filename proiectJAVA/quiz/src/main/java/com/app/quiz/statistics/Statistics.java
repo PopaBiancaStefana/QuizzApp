@@ -60,17 +60,19 @@ public class Statistics {
         }
     }
 
-    public MutableGraph getMutableGraph( Graph<Person, DefaultEdge> simpleGraph) {
+    public MutableGraph getMutableGraph(Graph<Person, DefaultEdge> simpleGraph) {
 
         MutableGraph mutableGraph = mutGraph("network").setDirected(false);
         for (Person person : people) {
             List<Person> partners = findPartners(person);
+            MutableNode node1 = mutNode(person.getEmail());
             for (Person partner : partners) {
                 if (simpleGraph.getEdge(partner, person) == null) {
-                    MutableNode node1 = mutNode(person.getEmail());
                     node1.addLink(Link.to(mutNode(partner.getEmail())));
-                    mutableGraph.add(node1);
                 }
+            }
+            if (partners.size() != 0) {
+                mutableGraph.add(node1);
             }
         }
         return mutableGraph;

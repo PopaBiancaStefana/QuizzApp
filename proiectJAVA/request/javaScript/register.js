@@ -138,7 +138,7 @@ function peopleGraph() {
                 } 
                 
                 var title = document.createElement("h2");
-                title.innerText = "Observa cu cine ai lucruri in comun!";
+                title.innerText = "Observa cu cine ai lucruri in comun!*";
                 title.style.margin = '0% 25%'
                 graph.appendChild(title);
                
@@ -148,6 +148,10 @@ function peopleGraph() {
                 graph.appendChild(title);
 
                 graph.innerHTML = graph.innerHTML + xhr.responseText;
+
+                var smallText = document.createElement("p");
+                smallText.innerText = "*Legaturile se realizeaza intre persoanele ce au macar 5 domenii in comun.";
+                graph.appendChild(smallText);
                
             } else {
                 alert("[Eroare]O sa vedem mai tarziu.");
