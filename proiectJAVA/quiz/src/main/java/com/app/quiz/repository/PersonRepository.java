@@ -26,19 +26,7 @@ public interface PersonRepository extends JpaRepository<Person, String> {
     @Procedure( name ="QUIZ.GET_SCORES")
     String GetScores(@Param("p_scores") String scores);
 
+    @Procedure( name = "QUIZ.CHECK_IF_PLAYER_EXISTS")
+    int CheckIfPlayerExists(@Param("p_email") String email);
 
-//@Autowired
-//JdbcTemplate jdbcTemplate = new JdbcTemplate();
-//
-//    @Override
-//    public String NEXT_QUESTION( String email, String raspuns) {
-//        SimpleJdbcCall jdbcCall = new SimpleJdbcCall(jdbcTemplate)
-//                .withCatalogName("QUIZ") //package name
-//                .withFunctionName("NEXT_QUESTION");
-//
-//        SqlParameterSource paramMap = new MapSqlParameterSource()
-//                .addValue("p_email", email).addValue("p_raspuns", raspuns);
-//        //First parameter is function output parameter type.
-//        return jdbcCall.executeFunction(String.class, paramMap);
-  //  }
 }

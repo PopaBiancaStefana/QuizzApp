@@ -19,36 +19,12 @@ public class Raspunsuri {
     @Column(name = "CORECT")
     private String corect;
 
-    public String getqId() {
-        return qId;
-    }
-
-    public void setqId(String qId) {
-        this.qId = qId;
-    }
-
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getTextRaspuns() {
-        return textRaspuns;
-    }
-
-    public void setTextRaspuns(String textRaspuns) {
-        this.textRaspuns = textRaspuns;
-    }
-
-    public String getCorect() {
-        return corect;
-    }
-
-    public void setCorect(String corect) {
-        this.corect = corect;
     }
 
     @Override

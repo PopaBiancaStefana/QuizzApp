@@ -12,7 +12,7 @@ body {
     padding: 0;
     box-sizing: border-box;
     margin-right: 0;
-   }
+}
 
 .form-container {
     position: absolute;
@@ -69,31 +69,65 @@ button:hover {
     transform: translate(-50%, -50%);
     border-radius: 20px;
     position: absolute;
-    margin-top: 500px;
+    margin-top: 1230px;
 }
 
-.registerBtn{
+.registerBtn {
     margin-bottom: 0%;
 }
+
 svg {
     width: 65%;
     margin-left: 15%;
 }
-.title-teams-div{
+
+.title-teams-div {
     margin: 5% 35%;
+    padding-top: 15px;
 }
-.stats-container{
-    margin-top: 30%;
+
+.stats-container {
+    margin-top: 10%;
 }
-.algo-desc-div{
-    margin-bottom: 100px;
+
+.algo-desc-div {
+    margin-bottom: 50px;
+    background-color: #e8eaf6;
+    border-radius: 20px;
+    padding-left: 10px;
 }
-.teamsSVG{
+
+.teamsSVG {
     height: 300px;
 }
-.teams{
-    margin-bottom: 200px;
+
+.teams {
+    margin-bottom: 100px;
 }
-li{
+
+li {
     margin-left: 30px;
+}
+
+.algo-steps1 {
+    margin-bottom: 100px;
+}
+
+#dfs {
+    margin-top: 10px;
+}
+
+.teams-title {
+    margin-left: 40%;
+}
+
+.connectedComponentsSVG {
+    margin-bottom: 150px;
+}
+
+.conex-div {
+    background-color: #e7dada;
+    padding-top: 15px;
+    padding-left: 10px;
+    border-radius: 20px;
 }

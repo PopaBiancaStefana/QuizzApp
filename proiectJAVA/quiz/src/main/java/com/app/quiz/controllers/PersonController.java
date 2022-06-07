@@ -3,6 +3,7 @@ package com.app.quiz.controllers;
 import com.app.quiz.models.Person;
 import com.app.quiz.service.PersonService;
 import com.app.quiz.statistics.BipartiteGraph;
+import com.app.quiz.statistics.ConnectedComponents;
 import com.app.quiz.statistics.Statistics;
 import org.jgrapht.Graph;
 import org.jgrapht.graph.DefaultEdge;
@@ -25,11 +26,26 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 @RestController
-@CrossOrigin(origins = "http://127.0.0.1:5500", maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RequestMapping("api/v1/quiz")
 public class PersonController {
     @Autowired
     private PersonService personService;
+
+    @GetMapping(value = "/comp")
+    public ResponseEntity<FileSystemResource> connectComponents() throws IOException {
+        Statistics stats = new Statistics(personService.findAll());
+        stats.addDomains();
+        Graph<Person, DefaultEdge> graph = stats.getGraphForBipartition();
+        ConnectedComponents connect = new ConnectedComponents(graph);
+        connect.connectComponents();
+        stats.makeCustomNetwork(connect.makeConnexGraph(),"networkConex.svg");
+        Path path = new File("src/main/resources/networkConex.svg").toPath();
+        FileSystemResource resource = new FileSystemResource(path);
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(Files.probeContentType(path)))
+                .body(resource);
+    }
 
     @GetMapping(value = "/graphSVG")
     public ResponseEntity<FileSystemResource> getBipartiteSVG() throws IOException {
@@ -46,7 +62,7 @@ public class PersonController {
                     .contentType(MediaType.parseMediaType(Files.probeContentType(path)))
                     .body(resource);
         }
-        return ResponseEntity.notFound()
+        return ResponseEntity.accepted()
                 .build();
     }
 
@@ -59,7 +75,10 @@ public class PersonController {
         if(checker.isBipartite()) {
             return new ResponseEntity<>(checker.maxMatching(), new HttpHeaders(), HttpStatus.OK);
         }
-        return new ResponseEntity<>(null, new HttpHeaders(), HttpStatus.NOT_FOUND);
+        else{
+            return new ResponseEntity<>(ConnectedComponents.makeBuddies(personService.findAll()), new HttpHeaders(), HttpStatus.OK);
+        }
+
     }
 
     @GetMapping(value = "/test")
@@ -89,14 +108,20 @@ public class PersonController {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Person> createPerson(@RequestBody Person person) {
-        //gnerate hashcode for email adress
-        person.setHashcode();
-        //save to database
-        Person createdPerson = personService.save(person);
-        if (createdPerson == null)
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 
-        return new ResponseEntity<>(createdPerson, new HttpHeaders(), HttpStatus.CREATED);
+        if(personService.checkMail(person.getEmail()) == 0) {
+            //gnerate hashcode for email adress
+            person.setHashcode();
+            //save to database
+            Person createdPerson = personService.save(person);
+            if (createdPerson == null){
+                return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+            return new ResponseEntity<>(createdPerson, new HttpHeaders(), HttpStatus.CREATED);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.CONFLICT); //409
+        }
     }
 
     @PostMapping(value = "/game", consumes = MediaType.APPLICATION_JSON_VALUE)

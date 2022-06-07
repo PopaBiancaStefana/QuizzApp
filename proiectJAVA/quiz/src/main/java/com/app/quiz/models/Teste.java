@@ -40,18 +40,6 @@ public class Teste {
     private String finalAnsId;
 
 
-//    @ManyToOne
-//    @JoinColumn(name = "EMAIL" , referencedColumnName = "EMAIL")
-//    private Person person;
-
-//    public Person getPerson() {
-//        return person;
-//    }
-//
-//    public void setPerson(Person person) {
-//        this.person = person;
-//    }
-
     public String getEmail() {
         return email;
     }
@@ -60,85 +48,6 @@ public class Teste {
         this.email = email;
     }
 
-    public Byte getqNr() {
-        return qNr;
-    }
-
-    public void setqNr(Byte qNr) {
-        this.qNr = qNr;
-    }
-
-    public String getqId() {
-        return qId;
-    }
-
-    public void setqId(String qId) {
-        this.qId = qId;
-    }
-
-    public String getAns1Id() {
-        return ans1Id;
-    }
-
-    public void setAns1Id(String ans1Id) {
-        this.ans1Id = ans1Id;
-    }
-
-    public String getAns2Id() {
-        return ans2Id;
-    }
-
-    public void setAns2Id(String ans2Id) {
-        this.ans2Id = ans2Id;
-    }
-
-    public String getAns3Id() {
-        return ans3Id;
-    }
-
-    public void setAns3Id(String ans3Id) {
-        this.ans3Id = ans3Id;
-    }
-
-    public String getAns4Id() {
-        return ans4Id;
-    }
-
-    public void setAns4Id(String ans4Id) {
-        this.ans4Id = ans4Id;
-    }
-
-    public String getAns5Id() {
-        return ans5Id;
-    }
-
-    public void setAns5Id(String ans5Id) {
-        this.ans5Id = ans5Id;
-    }
-
-    public String getAns6Id() {
-        return ans6Id;
-    }
-
-    public void setAns6Id(String ans6Id) {
-        this.ans6Id = ans6Id;
-    }
-
-    public String getCorrectAnsId() {
-        return correctAnsId;
-    }
-
-    public void setCorrectAnsId(String correctAnsId) {
-        this.correctAnsId = correctAnsId;
-    }
-
-    public String getFinalAnsId() {
-        return finalAnsId;
-    }
-
-    public void setFinalAnsId(String finalAnsId) {
-        this.finalAnsId = finalAnsId;
-    }
 
     @Override
     public boolean equals(Object o) {

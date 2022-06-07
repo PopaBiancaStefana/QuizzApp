@@ -10,7 +10,7 @@
 <body>
     <div class="form-container">
         <h1>Register</h1>
-        <p>Please fill in this form to generate a hash</p>
+        <p>Introdu o adresa de email valida pentru a incepe testul.</p>
         <hr>
 
         <label for="email"><b>Email</b></label>
@@ -36,21 +36,54 @@
                 <li>Toti vecinii sai vor fi colorati cu 0 (setul V).</li>
                 <li>Toti vecinii vecinilor vor fi colorati cu 0 (setul U).</li>
                 <li>In acest fel, verificam daca graful este 2-colorabil.</li>
-                <li>In timp ce coloram fiecare nod, daca gasim un nod cu aceeasi culoare ca nodul curent, inseamna ca graful nu este 2-colorabil (nu este bipartit)</li>
+                <li>In timp ce coloram fiecare nod, daca gasim un nod cu aceeasi culoare ca nodul curent, inseamna ca
+                    graful nu este 2-colorabil (nu este bipartit)</li>
             </ul>
-            <p>Daca graful este bipartit, atunci vom calcula Maximum Bipartite Matching. Graful bipartit va fi reprezentat cu o matrice de adiacenta, unde jucatorii vor fi randuri si potentialii coechipieri
+            <p>Daca graful este bipartit, atunci vom calcula Maximum Bipartite Matching. Graful bipartit va fi
+                reprezentat cu o matrice de adiacenta, unde jucatorii vor fi randuri si potentialii coechipieri
                 vor fi coloane.</p>
             <p>Am folosit Ford-Fulkerson astfel:</p>
-            <ul class="algo-steps">
+            <ul class="algo-steps1">
                 <li>Retinem intr-un vector assign[] ce echipe au fost generate.</li>
-                <li>Fiecare jucator va avea un vector visited[] pentru a verifica ce canditati au fost deja asignati.</li>
+                <li>Fiecare jucator va avea un vector visited[] pentru a verifica ce canditati au fost deja asignati.
+                </li>
                 <li>Pentru fiecare jucator aplicam Depth-First Search (DFS) (pentru a gasi un coechipier)</li>
             </ul>
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+        </div>
+        <div class="conex-div">
+            <p>In cazul in care graful nu este bipartit si este format din mai multe componente conexe, vom folosi un
+                algoritm de gasire a celor n componente conexe si conectare a acestora printr-un numar minim de muchii,
+                anume n-1.
+                Muchiile se vor realiza intre jucatorii cu scorul cel mai mare din fiecare componenta.</p>
+            <p id="dfs">Gasirea componentelor conexe pentru un graf neorientat se realizeaza folosind algoritmul DFS,
+                pornind de la fiecare varf nevizitat.</p>
+            <ol class="algo-steps">
+                <li>Se initializeaza toate nodurile ca fiind nevizitate intr-un vector de aparitii.</li>
+                <li>Pentru fiecare vârf "v”, daca nu a fost vizitat înainte, se apeleaza DFSUtil cu parametrii: indexul
+                    nodului v, vectorul de aparitii si "biggestScore" avand valoarea index-ului lui v.</li>
+                <li>Se salveaza intr-o lista index-ul jucatorului cu scorul cel mai mare, returnat de DFSUtil </li>
+            </ol>
+            <p id="dfs">DFSUtil(v, visited, biggestScore)</p>
+            <ol class="algo-steps1">
+                <li>Se marcheaza "v” ca vizitat.</li>
+                <li>Se parcurge fiecare „u” al "v” adiacent.
+                    <ul>
+                        <li>Se verifica si se actualizeaza pentru fiecare varf valoarea "biggestScore", ce contine
+                            index-ul jucatorului cu scorul cel mai mare din componenta respectiva</li>
+                        <li>Dacă „u” nu este vizitat, atunci se apeleaza recursiv DFSUtil(u)</li>
+                    </ul>
+                </li>
+                <li>Se returneaza "biggestScore"</li>
+            </ol>
+            <hr style="height:2px;border-width:0;color:gray;background-color:gray">
         </div>
         <div id="teamsSVG" class="teamsSVG">
         </div>
         <div id="teams" class="teams">
-            <p>Aici poti vedea cu cine esti in echipa.</p>
+            <h2 class="teams-title">Echipele create</h2>
+        </div>
+        <div id="connectedComponentsSVG" class="connectedComponentsSVG">
         </div>
 
         <button type="submit" class="registerBtn" onclick="location.href='register.html';">Back</button>

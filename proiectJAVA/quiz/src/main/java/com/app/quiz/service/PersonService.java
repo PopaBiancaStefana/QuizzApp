@@ -51,4 +51,7 @@ public class PersonService {
         return personRepository.GetScores(scores);
     }
 
+    public int checkMail(String email){
+        return personRepository.CheckIfPlayerExists(email);
+    }
 }
