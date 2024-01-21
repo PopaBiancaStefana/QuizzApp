@@ -1,4 +1,4 @@
- ## QuizzApp - dynamic quizz generation with various topics 
+ ## QuizzApp - dynamic quiz generation with various topics 
 
 This web-based quiz application is developed using **Java** with the **Spring framework** for the backend and **PLSQL** for database operations. The application uses Named Stored Procedure Queries in models to interact with PLSQL procedures, which handle quiz generation, scoring, and data retrieval.
 
